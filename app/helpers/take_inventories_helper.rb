@@ -1,0 +1,2 @@
+module TakeInventoriesHelper
+end

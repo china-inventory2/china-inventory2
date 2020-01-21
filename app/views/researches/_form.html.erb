@@ -1,0 +1,82 @@
+<%= form_with(model: research, local: true) do |form| %>
+  <% if research.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(research.errors.count, "error") %> prohibited this research from being saved:</h2>
+
+      <ul>
+      <% research.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :japan_image_url %>
+    <%= form.text_field :japan_image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_title %>
+    <%= form.text_field :japan_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_url %>
+    <%= form.text_field :japan_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_description %>
+    <%= form.text_field :japan_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_price %>
+    <%= form.number_field :japan_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_image_url %>
+    <%= form.text_field :china_image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_title %>
+    <%= form.text_field :china_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_url %>
+    <%= form.text_field :china_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_price %>
+    <%= form.text_field :china_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :simulate_price %>
+    <%= form.number_field :simulate_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jpn_research_check %>
+    <%= form.number_field :jpn_research_check %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chn_research_check %>
+    <%= form.number_field :chn_research_check %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team_id %>
+    <%= form.text_field :team_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

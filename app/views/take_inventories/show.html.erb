@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fiscal year:</strong>
+  <%= @take_inventory.fiscal_year %>
+</p>
+
+<p>
+  <strong>Beginning product inventory:</strong>
+  <%= @take_inventory.beginning_product_inventory %>
+</p>
+
+<p>
+  <strong>Cost of sales:</strong>
+  <%= @take_inventory.cost_of_sales %>
+</p>
+
+<p>
+  <strong>Period end product inventory:</strong>
+  <%= @take_inventory.period_end_product_inventory %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @take_inventory.user %>
+</p>
+
+<%= link_to 'Edit', edit_take_inventory_path(@take_inventory) %> |
+<%= link_to 'Back', take_inventories_path %>
