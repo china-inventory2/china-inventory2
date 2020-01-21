@@ -1,24 +1,13 @@
-# README
+# サービスに関して
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- 名称：China inbenory2
 
-Things you may want to cover:
+# 環境構築
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ git clone git@github.com:china-inventory2/china-inventory2.git
+$ cd china-inventory2
+$ docker-compose up
+$ docker-compose run web bundle exec rails db:create
+$ docker-compose run web bundle exec rails db:migrate
+```
