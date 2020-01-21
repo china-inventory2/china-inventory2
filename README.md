@@ -9,10 +9,10 @@ docker desktopをインストールする。
 $ git clone git@github.com:china-inventory2/china-inventory2.git
 $ cd china-inventory2
 
-初回時はこれ　（imageがなければimageビルドから）コンテナの起動までを行う
+初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う
 $ docker-compose up
 
-bundle installはこれ。　vendor/bundleにインストールされるように設定してあります。
+bundle installはこれ。vendor/bundleにインストールされるように設定してあります。
 $ docker-compose run web bundle install
 
 マイグレートはこれ。
