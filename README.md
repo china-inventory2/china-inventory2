@@ -24,6 +24,9 @@ $ docker-compose stop
 
 2回目以降からは以前に作ったコンテナを起動させます。
 $ docker-compose start
+
+それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
+docker exec -it ●●● /bin/bash
 ```
 
 # Dockerの操作マニュアルはこちら
