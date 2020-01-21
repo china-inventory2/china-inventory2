@@ -5,10 +5,11 @@
 # 環境構築
 
 ```
-docker desctopをインストールする。
+docker desktopをインストールする。
 $ git clone git@github.com:china-inventory2/china-inventory2.git
 $ cd china-inventory2
 $ docker-compose up
+$ docker-compose run web bundle install
 $ docker-compose run web bundle exec rails db:create
 $ docker-compose run web bundle exec rails db:migrate
 
