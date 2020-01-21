@@ -1,5 +1,12 @@
 FROM ruby:2.6.3
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+# install bundler.
+RUN apt-get update && \
+    apt-get install -y vim less postgresql-client && \
+    apt-get install -y build-essential libpq-dev nodejs && \
+    gem install bundler && \
+    apt-get clean && \
+    rm -r /var/lib/apt/lists/*
+
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
@@ -13,13 +20,9 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
 ENV EDITOR vim
-ENV BUNDLE_PATH vendor/bundle
 
 RUN bundle config --global retry 5 \
   && bundle config --global jobs 4 \
   && bundle config --global path vendor/bundle
 
-RUN bundle install
-
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+RUN bundle install --path vendor/bundle
