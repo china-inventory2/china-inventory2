@@ -1,15 +1,15 @@
-  defaults: &defaults
-    working_directory: ~/myapp
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-        environment:
-          RAILS_ENV: test
-          DATABASE_URL: 'postgres://postgres:password@127.0.0.1'
-          TZ: Asia/Tokyo
-      - image: circleci/postgres:12.1-alpine
-        environment:
-          TZ: Asia/Tokyo
-          POSTGRES_PASSWORD: password
+defaults: &defaults
+  working_directory: ~/myapp
+  docker:
+    - image: circleci/ruby:2.6.3-stretch-node
+      environment:
+        RAILS_ENV: test
+        DATABASE_URL: 'postgres://postgres:password@127.0.0.1'
+        TZ: Asia/Tokyo
+    - image: circleci/postgres:12.1-alpine
+      environment:
+        TZ: Asia/Tokyo
+        POSTGRES_PASSWORD: password
 
 version: 2
 jobs:
