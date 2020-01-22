@@ -1,22 +1,36 @@
-version: 2
+defaults: &defaults
+  working_directory: ~/
+  docker:
+    - image: circleci/ruby:2.6.3-stretch-node
+    #   environment:
+    #     RAILS_ENV: test
+    #     TZ: '/usr/share/zoneinfo/Asia/Tokyo'
+    #     DATABASE_URL: 'postgres://postgres:password@127.0.0.1'
+    - image: circleci/postgres:12.1-alpine
+    #   environment:
+    #     TZ: /usr/share/zoneinfo/Asia/Tokyo
+    #     POSTGRES_PASSWORD: password
+    # - image: circleci/redis:5.0
+
+# Ruby CircleCI 2.1 configuration file
+#
+# Check https://circleci.com/docs/2.0/ruby/ for more details
+#
+version: 2.1 
+
+
+orbs:
+  ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
 
 jobs: 
   build: 
-    docker: 
-      - image: circleci/ruby:2.6.3-stretch-node
-      - image: circleci/postgres:12.1-alpine
+    <<: *defaults
     steps: 
       - checkout
       - run: 
           name: Which bundler?
           command: bundle -v
-          command: bundle-install --path vendor/bundle
-  rubocop: 
-    docker: 
-      - image: circleci/ruby:2.6.3-stretch-node
-      - image: circleci/postgres:12.1-alpine
-    steps: 
-      - checkout
+      - ruby/bundle-install
       # Rubocop & Reviewdogの実行
       - run:
           name: Rubocop & Reviewdog
