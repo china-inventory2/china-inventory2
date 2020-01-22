@@ -17,6 +17,7 @@ jobs:
       - run: 
           name: Which bundler?
           command: bundle -v
+      - ruby/bundle-install
       # Rubocop & Reviewdogの実行
       - run:
           name: Rubocop & Reviewdog
