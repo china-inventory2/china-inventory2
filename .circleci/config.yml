@@ -33,15 +33,15 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+  rubocop: 
+    docker: 
+      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/postgres:12.1-alpine
+    steps: 
+      - checkout
       # Rubocop & Reviewdogの実行
       - run:
           name: Rubocop & Reviewdog
           command: bundle exec rubocop
-      # 初期設定
-      - run:
-          name: Database setup
-          command: |
-            bundle exec rails db:create
-            bundle exec rails db:migrate
 # What to do next? Set up a test job. Please see 
 # https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
