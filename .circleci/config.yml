@@ -18,11 +18,15 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      # 初期設定
       - run:
-          name: Rubocop
+          name: Database setup
+          command: |
+            bundle exec rails db:create
+            bundle exec rails db:migrate
+      # Rubocop & Reviewdogの実行
+      - run:
+          name: Rubocop & Reviewdog
           command: bundle exec rubocop
-      - run:
-          name: Run spec
-          command: bundle exec rspec spec
 # What to do next? Set up a test job. Please see 
 # https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
