@@ -11,7 +11,7 @@
           TZ: Asia/Tokyo
           POSTGRES_PASSWORD: password
 
-version: 2.1
+version: 2
 
 orbs:
   ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
