@@ -9,11 +9,15 @@ docker desktopをインストールする。
 $ git clone git@github.com:china-inventory2/china-inventory2.git
 $ cd china-inventory2
 
-初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う
+初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う。初回は起動に失敗すると思います。
 $ docker-compose up
 
-bundle installはこれ。vendor/bundleにインストールされるように設定してあります。
+bundle installはこれ。railsが入ってるコンテナのvendor/bundleにインストールされるよう設定してあります。
 $ docker-compose run web bundle install
+
+Gemfileに変更を加えた場合はこれですが、Gemをインストールする場合は事前にご連絡ください。
+$ docker-compose run web bundle install
+$ docker-compose build
 
 マイグレートはこれ。
 $ docker-compose run web bundle exec rails db:create
