@@ -38,6 +38,9 @@ $ docker-compose run web bundle exec rails ●●●●●●●●● ~
 モデルでのテストコードを作っていく場合は下記のようにして
 docker-compose run web bundle exec rails g rspec:model model_name
 
+コントローラーでのテストコードを作っていく場合は下記のようにする。コントローラー名にsをつけるのを忘れずに。
+docker-compose run web bundle exec rails g rspec:model controllers_name
+
 ```
 # Dockerの操作マニュアルはこちら
 ```
@@ -45,7 +48,11 @@ https://qiita.com/okyk/items/a374ddb3f853d1688820
 ```
 # Rspecの操作マニュアルはこちら
 ```
+初めてRSpecでRailsアプリのモデルをテストする
 https://qiita.com/y4u0t2a1r0/items/ae4d832fbfb697b4b253
+
+初めてRSpecでRailsアプリのコントローラーをテストする
+https://qiita.com/y4u0t2a1r0/items/f875bc5a07895ff1cd27
 ```
 # etc...
 ```
