@@ -30,14 +30,23 @@ $ docker-compose stop
 $ docker-compose start
 
 それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
-docker exec -it ●●● /bin/bash
-```
+$ docker exec -it ●●● /bin/bash
 
+railsコマンドを使用するときはvendor/bundle配下のrailsを使うようにします。
+$ docker-compose run web bundle exec rails ●●●●●●●●● ~
+
+モデルでのテストコードを作っていく場合は下記のようにして
+docker-compose run web bundle exec rails g rspec:model model_name
+
+```
 # Dockerの操作マニュアルはこちら
 ```
 https://qiita.com/okyk/items/a374ddb3f853d1688820
 ```
-
+# Rspecの操作マニュアルはこちら
+```
+https://qiita.com/y4u0t2a1r0/items/ae4d832fbfb697b4b253
+```
 # etc...
 ```
 ```
