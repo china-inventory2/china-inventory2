@@ -56,4 +56,5 @@ https://qiita.com/y4u0t2a1r0/items/f875bc5a07895ff1cd27
 ```
 # etc...
 ```
+何かあれば適宜追加します。
 ```
