@@ -1,28 +1,37 @@
-version: 2.1 
+  defaults: &defaults
+    working_directory: ~/myapp
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+      environment:
+        RAILS_ENV: test
+        DATABASE_URL: 'postgres://postgres:password@127.0.0.1'
+        TZ: Asia/Tokyo
+      - image: circleci/postgres:12.1-alpine
+      environment:
+        TZ: Asia/Tokyo
+        POSTGRES_PASSWORD: password
+
+version: 2.1
 
 orbs:
   ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
 
-jobs: 
-  build: 
-    docker: 
-      - image: circleci/ruby:2.6.3-stretch-node
-      - image: circleci/postgres:12.1-alpine
-    steps: 
+jobs:
+  build:
+    <<: *defaults
+    steps:
       - checkout
-      - run: 
+      - run:
           name: Which bundler?
           command: bundle -v
-      - ruby/bundle-install
-  rubocop: 
-    docker: 
-      - image: circleci/ruby:2.6.3-stretch-node
-      - image: circleci/postgres:12.1-alpine
-    steps: 
+  rubocop:
+    <<: *defaults
+    steps:
       - checkout
       # Rubocop & Reviewdogの実行
+      - ruby/bundle-install
       - run:
           name: Rubocop & Reviewdog
           command: bundle exec rubocop
-# What to do next? Set up a test job. Please see 
+# What to do next? Set up a test job. Please see
 # https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
