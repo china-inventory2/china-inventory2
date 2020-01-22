@@ -37,5 +37,11 @@ jobs:
       - run:
           name: Rubocop & Reviewdog
           command: bundle exec rubocop
+      # 初期設定
+      - run:
+          name: Database setup
+          command: |
+            bundle exec rails db:create
+            bundle exec rails db:migrate
 # What to do next? Set up a test job. Please see 
 # https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
