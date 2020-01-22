@@ -17,13 +17,6 @@ jobs:
       - run: 
           name: Which bundler?
           command: bundle -v
-      - ruby/bundle-install
-      # 初期設定
-      - run:
-          name: Database setup
-          command: |
-            bundle exec rails db:create
-            bundle exec rails db:migrate
       # Rubocop & Reviewdogの実行
       - run:
           name: Rubocop & Reviewdog
