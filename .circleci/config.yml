@@ -24,7 +24,6 @@ orbs:
 
 jobs: 
   build: 
-    <<: *defaults
     docker: 
       - image: circleci/ruby:2.6.3-stretch-node
       - image: circleci/postgres:12.1-alpine
