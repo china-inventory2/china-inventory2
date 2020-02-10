@@ -1,6 +1,6 @@
 # サービスに関して
 
-- 名称：China inbenory2(個人開発用)
+- 名称：China inbenory2
 
 
 # 環境構築
