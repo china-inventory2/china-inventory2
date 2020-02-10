@@ -3,6 +3,7 @@ inherit_from: .rubocop_todo.yml
 require:
   - rubocop-rails
 
+# 除外対象ファイル
 AllCops:
   Exclude:
     - "tmp/**/*"
@@ -18,23 +19,141 @@ AllCops:
 Rails:
   Enabled: true
 
-Style/AndOr:
-  EnforcedStyle: conditionals
+# Assignment : 変数への代入
+# Branch : メソッド呼び出し
+# Condition : 条件文
+# 上記3項目の合計ポイントをRuboCop君が計算して、基準値を超えると警告が出る、という仕組み。
+Metrics/AbcSize:
+  Max: 30
 
+# ブロックの長さが最大値を超えているかどうかをチェック
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - config/**/*
+    - db/schema.rb
+    - config/routes.rb
+    - lib/tasks/**/*.rake
+    - "bin/*"
+
+# クラスの長さをチェック
+Metrics/ClassLength:
+  CountComments: false
+  Max: 120
+
+# Rubyの循環的複雑度をチェック
+# 1-10 : シンプルで、リスクが小さい関数
+# 11-20 : 中程度の複雑さとリスクの関数
+# 21-50 : 複雑、リスクが高い関数
+# 50以上 : マジでヤバイ関数
+Metrics/CyclomaticComplexity:
+  Max: 30
+
+# Lineの長さチェック
+Metrics/LineLength:
+  Enabled: false
+
+# Methodの長さチェック
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+# アルファベット以外の文字を使用しているかのチェック
 Style/AsciiComments:
   Enabled: false
 
+# クラス内のクラスなどを定義する際の形式を強制
+Style/ClassAndModuleChildren:
+  Enabled: false
+  EnforcedStyle: compact
+
+# ドキュメントの無い public class を許可する
 Style/Documentation:
   Enabled: false
 
+# Rubyでは書式付き文字列の作成方法が複数あり、
+# どれを利用するか設定し、統一されているかチェックすることができます。
+Style/FormatString:
+  EnforcedStyle: "percent"
+
+# 1行で書くべき if / unless ステートメントに対して警告を出す。
+Style/IfUnlessModifier:
+  Enabled: true
+
+# 数値リテラルを3ケタ区切りで _ で区切っているかどうかチェックする。
+# デフォルトは5ケタ以上の場合にチェックする
 Style/NumericLiterals:
+  MinDigits: 5
   Enabled: false
 
-Style/ClassAndModuleChildren:
+# 冗長なselfをチェック
+Style/RedundantSelf:
+  Enabled: true
+
+# while, until が1行80文字収まる場合に1行で記述しているかチェック
+Style/WhileUntilModifier:
   Enabled: false
 
+# Ruby 2.3 から# frozen_string_literal: trueというマジックコメントを使用すると、
+# 文字列リテラルがデフォルトでfreezeされるようになりました。
+# これは Ruby 3.0 では文字列リテラルがデフォルトで freeze (＝不変) 
+# になる予定なので、互換性の問題もあり移行シュミレーションが可能なように導入されています。
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# シンボル配列には%iか％Iを使用するよう強制する
+Style/SymbolArray:
+  Enabled: false
+
+# ％w（）構文を使用していない単語のような文字列で構成された配列リテラルをチェックできます。
+Style/WordArray:
+  EnforcedStyle: brackets
+
+# {}とdo endをちゃんと使い分けるよう強制する。
+Style/BlockDelimiters:
+  Enabled: false
+
+# 内容が空のメソッドを書く場合のスタイルを検査します。
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# 単一行ラムダのラムダリテラル構文の使用と、複数行ラムダのメソッド呼び出し構文をチェックします。
+Style/Lambda:
+  EnforcedStyle: literal
+
+# `include`、` extend`、および `prepend`がトップレベルに存在することを確認します。
+Style/MixinUsage:
+  Description: 'Checks that `include`, `extend` and `prepend` exists at the top level.'
+  Enabled: true
+  Exclude:
+    - 'bin/**/*'
+
+# 複数行にわたるメソッド呼び出しのメソッド名部分のインデントをチェック
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  Enabled: true
+
+# ハッシュリテラルに利用するブレース開始直後と、ブレース終了直前と、空ブレースの間に半角スペースを必要とするかどうかを設定・チェック
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+# 指定したリテラルから始まるメソッドは警告する
+Naming/PredicateName:
+  NamePrefixBlacklist:
+    - "is_"
+
+# Gemをグループ内でアルファベット順にソートされているかチェック
 Bundler/OrderedGems:
   Enabled: false
 
-Lint/ShadowedException:
+# マイグレーションで、alterクエリが結合可能かどうかをチェックします。
+# 組み合わせ可能なクエリが検出された場合、代わりに `bulk：true`で` change_table`を使用することをお勧めします。
+Rails/BulkChangeTable:
   Enabled: false
+
+# デフォルト以外のenvironment環境を追加する場合はここに追記する。
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
