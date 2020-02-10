@@ -62,13 +62,14 @@ class BuyItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_buy_item
-      @buy_item = BuyItem.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def buy_item_params
-      params.require(:buy_item).permit(:japan_image_url, :japan_title, :japan_url, :item_description, :japan_price, :china_image_url, :china_title, :china_url, :china_price, :team_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_buy_item
+    @buy_item = BuyItem.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def buy_item_params
+    params.require(:buy_item).permit(:japan_image_url, :japan_title, :japan_url, :item_description, :japan_price, :china_image_url, :china_title, :china_url, :china_price, :team_id)
+  end
 end

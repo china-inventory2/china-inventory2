@@ -130,8 +130,7 @@ Style/MixinUsage:
 
 # 複数行にわたるメソッド呼び出しのメソッド名部分のインデントをチェック
 Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-  Enabled: true
+  Enabled: false
 
 # ハッシュリテラルに利用するブレース開始直後と、ブレース終了直前と、空ブレースの間に半角スペースを必要とするかどうかを設定・チェック
 Layout/SpaceInsideHashLiteralBraces:
@@ -139,7 +138,7 @@ Layout/SpaceInsideHashLiteralBraces:
 
 # 指定したリテラルから始まるメソッドは警告する
 Naming/PredicateName:
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - "is_"
 
 # Gemをグループ内でアルファベット順にソートされているかチェック

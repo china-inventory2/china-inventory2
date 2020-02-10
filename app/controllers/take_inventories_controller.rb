@@ -62,13 +62,14 @@ class TakeInventoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_take_inventory
-      @take_inventory = TakeInventory.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def take_inventory_params
-      params.require(:take_inventory).permit(:fiscal_year, :beginning_product_inventory, :cost_of_sales, :period_end_product_inventory, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_take_inventory
+    @take_inventory = TakeInventory.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def take_inventory_params
+    params.require(:take_inventory).permit(:fiscal_year, :beginning_product_inventory, :cost_of_sales, :period_end_product_inventory, :user_id)
+  end
 end

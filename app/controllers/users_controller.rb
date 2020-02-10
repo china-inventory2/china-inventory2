@@ -62,13 +62,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :employee_number, :line_id, :email, :address, :phone_number, :account_bank_name, :account_number, :business_expenses, :password_digest, :inventory_manager_flg, :reserch_user_flg, :owner_flg, :fired_flg, :admin, :remember_digest)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :employee_number, :line_id, :email, :address, :phone_number, :account_bank_name, :account_number, :business_expenses, :password_digest, :inventory_manager_flg, :reserch_user_flg, :owner_flg, :fired_flg, :admin, :remember_digest)
+  end
 end
