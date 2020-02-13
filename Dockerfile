@@ -42,5 +42,3 @@ ENV EDITOR vim
 RUN bundle config --global retry 5 \
   && bundle config --global jobs 4 \
   && bundle config --global path vendor/bundle
-
-RUN bundle install

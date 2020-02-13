@@ -37,10 +37,10 @@ railsコマンドを使用するときはvendor/bundle配下のrailsを使うよ
 $ docker-compose run web bundle exec rails ●●●●●●●●● ~
 
 モデルでのテストコードを作っていく場合は下記のようにして
-docker-compose run web bundle exec rails g rspec:model model_name
+$ docker-compose run web bundle exec rails g rspec:model model_name
 
 コントローラーでのテストコードを作っていく場合は下記のようにする。コントローラー名にsをつけるのを忘れずに。
-docker-compose run web bundle exec rails g rspec:controller controllers_name
+$ docker-compose run web bundle exec rails g rspec:controller controllers_name
 
 ```
 # Dockerの操作マニュアルはこちら
