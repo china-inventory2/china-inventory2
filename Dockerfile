@@ -18,6 +18,12 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 COPY . /myapp
 
+# nginxでpuma.sockを配置するディレクトリを作成
+RUN mkdir -p tmp/sockets
+
+RUN mkdir -p /tmp/public && \
+    cp -rf /myapp/public/* /tmp/public
+
 # Add a script to be executed every time the container starts.
 # コンテナが起動されるたびに実行するスクリプトを追加
 COPY entrypoint.sh /usr/bin/
