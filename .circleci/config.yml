@@ -17,7 +17,7 @@ orbs:
   ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
 
 jobs:
-  build:
+  rubocop:
     <<: *defaults
     steps:
       - checkout
@@ -32,5 +32,25 @@ jobs:
           name: Setup database
           command: |
             bundle exec rails db:setup
-# What to do next? Set up a test job. Please see
-# https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
+
+  rspec:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: bundle install --jobs=4 --retry=5 --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      # Rspec
+      - run:
+          name: Rspec
+          command: bundle exec rspec
