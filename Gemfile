@@ -85,3 +85,6 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'mechanize'
 gem 'rails-i18n'
 gem 'jquery-rails', '4.3.1'
+
+gem 'slack-api'
+gem 'clockwork'
