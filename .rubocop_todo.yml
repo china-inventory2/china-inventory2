@@ -143,11 +143,12 @@ Style/EmptyMethod:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 2
+# Offense count: 3
 Style/MixinUsage:
   Exclude:
     - 'bin/setup'
     - 'bin/update'
+    - 'lib/tasks/slack_batch.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.

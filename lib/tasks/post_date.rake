@@ -1,10 +1,17 @@
+require 'net/http'
+require 'uri'
+require 'json'
+
 namespace :post_date do
-  desc "post_slack" # このタスクの説明を書く
-# タスクの名前。　「:environment」がないとDBやモデルにアクセスできないので、使う場合は付ける
+  desc "post_slack"
   task post_slack: :environment do
-    CATAPI_URL = "http://thecatapi.com/api/images/get?format=xml"
-    doc = Nokogiri::XML(open(CATAPI_URL).read)
-    img_url = doc.xpath("//url").text
+    uri = URI("https://api.thecatapi.com/v1/images/search")
+    req = Net::HTTP::Get.new(uri)
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
+      http.request(req)
+    end
+    img_url = JSON.parse(res.body)[0]["url"]
+
     Slack.chat_postMessage text: img_url,
                            username: '猫画像Bot',
                            channel: '#random'
