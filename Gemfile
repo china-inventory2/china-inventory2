@@ -52,7 +52,9 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails'
-  gem 'rubocop-rails'
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'pry-rails'
