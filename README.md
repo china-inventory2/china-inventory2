@@ -2,7 +2,6 @@
 
 - 名称：China inbenory2
 
-
 # 環境構築
 
 ```
@@ -17,9 +16,9 @@ Gemfileに変更を加えた場合はこれですが、Gemをインストール�
 $ docker-compose build
 
 DB関連
-$ docker-compose run web bundle exec rails db:reset
-$ docker-compose run web bundle exec rails db:create
-$ docker-compose run web bundle exec rails db:migrate
+$ docker-compose run app bundle exec rails db:reset
+$ docker-compose run app bundle exec rails db:create
+$ docker-compose run app bundle exec rails db:migrate
 
 作業を終了する時はコンテナを終了させます。
 $ docker-compose stop
@@ -34,13 +33,13 @@ $ docker-compose logs -f
 $ docker exec -it ●●● /bin/bash
 
 railsコマンドを使用するときはvendor/bundle配下のrailsを使うようにします。
-$ docker-compose run web bundle exec rails ●●●●●●●●● ~
+$ docker-compose run app bundle exec rails ●●●●●●●●● ~
 
 モデルでのテストコードを作っていく場合は下記のようにして
-$ docker-compose run web bundle exec rails g rspec:model model_name
+$ docker-compose run app bundle exec rails g rspec:model model_name
 
 コントローラーでのテストコードを作っていく場合は下記のようにする。コントローラー名にsをつけるのを忘れずに。
-$ docker-compose run web bundle exec rails g rspec:controller controllers_name
+$ docker-compose run app bundle exec rails g rspec:controller controllers_name
 
 ```
 # Dockerの操作マニュアルはこちら
@@ -59,7 +58,7 @@ controllers_spec
 ※やらなくていい    けど後学のために載せときます。
 https://qiita.com/y4u0t2a1r0/items/f875bc5a07895ff1cd27
 
-features_spec、アプリの利用者が使うものと全く同じWeb フォームを使ってテストできます。
+features_spec、アプリの利用者が使うものと全く同じフォームを使ってテストできます。
 https://nyoken.com/rspec-feature-capybara
 
 requests_spec リクエストに対するレスポンスが仕様に沿っているか検証します。

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resources :items, only: :index
   end
   resources :users do
-    resources :take_inventories, only: :index
+    resources :take_inventories
   end
 end

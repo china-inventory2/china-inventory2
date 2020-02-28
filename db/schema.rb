@@ -91,21 +91,21 @@ ActiveRecord::Schema.define(version: 2020_01_21_124154) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "employee_number"
     t.string "line_id"
-    t.string "email"
-    t.string "address"
+    t.string "email", null: false
+    t.string "address", null: false
     t.string "phone_number"
-    t.string "account_bank_name"
-    t.integer "account_number"
-    t.integer "business_expenses"
-    t.string "password_digest"
-    t.boolean "inventory_manager_flg"
-    t.boolean "reserch_user_flg"
-    t.boolean "owner_flg"
-    t.boolean "fired_flg"
-    t.boolean "admin"
+    t.string "account_bank_name", default: "1", null: false
+    t.integer "account_number", default: 1, null: false
+    t.integer "business_expenses", default: 1, null: false
+    t.string "password_digest", null: false
+    t.boolean "inventory_manager_flg", default: false, null: false
+    t.boolean "reserch_user_flg", default: false, null: false
+    t.boolean "owner_flg", default: false, null: false
+    t.boolean "fired_flg", null: false
+    t.boolean "admin", default: false, null: false
     t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
