@@ -86,5 +86,9 @@ gem 'mechanize'
 gem 'rails-i18n'
 gem 'jquery-rails', '4.3.1'
 
+# Slack APIを使用するために追加
 gem 'slack-api'
 gem 'clockwork'
+
+# .env ファイル作成のために追加
+gem 'dotenv-rails'
