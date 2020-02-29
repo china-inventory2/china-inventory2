@@ -1,3 +1,0 @@
-Starting china-inventory2_db_1 ... 
-[1A[2KStarting china-inventory2_db_1 ... [32mdone[0m[1BI, [2020-02-29T13:18:18.574456 #1]  INFO -- : Starting clock for 1 events: [ regular_slack ]
-I, [2020-02-29T13:18:18.575838 #1]  INFO -- : Triggering 'regular_slack'
