@@ -30,10 +30,11 @@
 /vendor/bundle/
 /vendor/.DS_Store
 
-# Ignore Slack API key information.
+# オリジナル
 .c9
 .env
 *.swp
 .DS_Store
 /vendor/bundle
 bin/heroku.sh
+nginx/logs
