@@ -29,3 +29,12 @@
 /config/master.key
 /vendor/bundle/
 /vendor/.DS_Store
+
+# オリジナル
+.c9
+.env
+*.swp
+.DS_Store
+/vendor/bundle
+bin/heroku.sh
+nginx/logs
