@@ -1,19 +1,39 @@
 version: '3'
 services:
-  db:
-    image: postgres:12.1-alpine
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: password
-  web:
+  app:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: sh launch.sh
     volumes:
       - .:/myapp
+      - public_volume:/myapp/public
+      - tmp_volume:/myapp/tmp
+      - log_volume:/myapp/log
+      - ./vendor/bundle:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
+  db:
+    image: postgres:12.1-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+  nginx:
+    build:
+      context: ./nginx
+    command: /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+    volumes:
+      - public_volume:/myapp/public
+      - tmp_volume:/myapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+volumes:
+  public_volume:
+  tmp_volume:
+  log_volume:
+  pg_data:

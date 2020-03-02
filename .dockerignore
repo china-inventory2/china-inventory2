@@ -1,0 +1,14 @@
+tmp/*
+log/*
+.git
+
+# 環境変数設定ファイルの無視
+/.env
+# マスターキーの無視
+/config/master.key
+# Sqliteデータベースの無視
+/db/*.sqlite3
+/db/*.sqlite3-journal
+# share配下の無視
+/vendor/*
+!/vendor/.keep
