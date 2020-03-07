@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'ログインしました。'
       if user.inventory_manager_flg == true || user.admin == true
         redirect_to root_url
-      else user.reserch_user_flg == true
+      elsif user.reserch_user_flg == true
         redirect_to root_url
       end
     else
