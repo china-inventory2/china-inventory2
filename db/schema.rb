@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_124154) do
     t.boolean "inventory_manager_flg", default: false, null: false
     t.boolean "reserch_user_flg", default: false, null: false
     t.boolean "owner_flg", default: false, null: false
-    t.boolean "fired_flg", null: false
+    t.boolean "fired_flg", default: false, null: false
     t.boolean "admin", default: false, null: false
     t.string "remember_digest"
     t.datetime "created_at", null: false
