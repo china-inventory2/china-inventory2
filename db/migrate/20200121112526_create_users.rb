@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :inventory_manager_flg, null: false, default: false
       t.boolean :reserch_user_flg, null: false, default: false
       t.boolean :owner_flg, null: false, default: false
-      t.boolean :fired_flg, null: false, default: ""
+      t.boolean :fired_flg, null: false, default: false
       t.boolean :admin, null: false, default: false
       t.string :remember_digest
 
