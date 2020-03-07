@@ -24,6 +24,9 @@ RUN bundle config --global retry 5 \
   && bundle config --global jobs 4 \
   && bundle config --global path vendor/bundle
 
+COPY launch.sh /usr/bin/
+RUN chmod +x /usr/bin/launch.sh
+
 # 文字コードの設定
 # 日本語を受け付けるように設定(rails consoleで日本語を使うなど) => LANG=C.UTF-8
 # 設定したロケールの値をC.UTF-8で上書きする => LC_ALL=C.UTF-8

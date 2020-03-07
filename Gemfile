@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '= 5.2.4.1'
 
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -87,6 +87,8 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'mechanize'
 gem 'rails-i18n'
 gem 'jquery-rails', '4.3.1'
+gem 'carrierwave'
+gem 'fog-aws'
 
 # Slack APIを使用するために追加
 gem 'slack-api'
