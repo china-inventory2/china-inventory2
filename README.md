@@ -69,7 +69,7 @@ https://qiita.com/t2kojima/items/ad7a8ade9e7a99fb4384
 features_spec、アプリの利用者が使うものと全く同じフォームを使ってテストできます。
 https://nyoken.com/rspec-feature-capybara
 
-モデルにあるファイルアップロード機能や、メール送信機 能、ジオコーディング(緯度経度)連携のテストの仕方
+モデルにあるファイルアップロード機能や、メール送信機能、ジオコーディング(緯度経度)連携のテストの仕方
 説明しきれず、、コレを買うといいかも
 https://leanpub.com/everydayrailsrspec-jp/read
 ```
