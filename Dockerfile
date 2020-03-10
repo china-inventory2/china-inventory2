@@ -42,3 +42,4 @@ COPY . /myapp
 
 # nginxでpuma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets
+RUN mkdir -p tmp/public

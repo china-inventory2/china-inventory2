@@ -27,8 +27,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/vendor/bundle/
-/vendor/.DS_Store
+
 
 # オリジナル
 .c9
@@ -36,5 +35,6 @@
 *.swp
 .DS_Store
 /vendor/bundle
+/vendor/.DS_Store
 bin/heroku.sh
 nginx/logs
