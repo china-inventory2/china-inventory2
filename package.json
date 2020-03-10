@@ -5,8 +5,11 @@
   "repository": "git@github.com:china-inventory2/china-inventory2.git",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "@rails/webpacker": "4.2.2",
+    "bootstrap": "4.3.1",
     "jquery": "^3.4.1",
+    "popper.js": "^1.16.1",
     "rails-ujs": "^5.2.4-1"
   },
   "devDependencies": {
