@@ -5,14 +5,15 @@
 # 環境構築
 
 ```
-docker desktopをインストールする。
+docker desktopをインストールしたあと、下記のリポジトリをクローンする。
 $ git clone git@github.com:china-inventory2/china-inventory2.git
 $ cd china-inventory2
 
-初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う。初回は起動に失敗すると思います。
+初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う。
 $ docker-compose up
 
-Gemfileに変更を加えた場合はこれですが、Gemをインストールする場合は事前にご連絡ください。
+Dockerfileに変更を加えた場合はこれです。
+Gemをインストールする時は、当チームはビルドする必要はありません。
 $ docker-compose build
 
 それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
