@@ -15,10 +15,13 @@ $ docker-compose up
 Gemfileに変更を加えた場合はこれですが、Gemをインストールする場合は事前にご連絡ください。
 $ docker-compose build
 
-DB関連
-$ docker-compose run app bundle exec rails db:reset
-$ docker-compose run app bundle exec rails db:create
-$ docker-compose run app bundle exec rails db:migrate
+それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
+$ docker exec -it ●●● /bin/bash
+
+DB関連 コンテナに直接アクセスして以下のコマンドをやればOK
+$ bundle exec rails db:reset
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
 
 作業を終了する時はコンテナを終了させます。
 $ docker-compose stop
@@ -29,17 +32,17 @@ $ docker-compose start
 2回目以降start起動するとデタッチドモードになってログを確認できません。見たいときはこれ。-fを外せばtailしない。
 $ docker-compose logs -f
 
-それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
-$ docker exec -it ●●● /bin/bash
-
 railsコマンドを使用するときはvendor/bundle配下のrailsを使うようにします。
-$ docker-compose run app bundle exec rails ●●●●●●●●● ~
+（まずはコンテナにアクセス、そして以下コマンド）
+$ bundle exec rails ●●●●●●●●● ~
 
 モデルでのテストコードを作っていく場合は下記のようにして
-$ docker-compose run app bundle exec rails g rspec:model model_name
+（まずはコンテナにアクセス、そして以下コマンド）
+$ rails g rspec:model model_name
 
 コントローラーでのテストコードを作っていく場合は下記のようにする。コントローラー名にsをつけるのを忘れずに。
-$ docker-compose run app bundle exec rails g rspec:controller controllers_name
+（まずはコンテナにアクセス、そして以下コマンド）
+$ rails g rspec:controller controllers_name
 
 ```
 # Dockerの操作マニュアルはこちら
