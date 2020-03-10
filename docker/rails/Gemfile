@@ -81,15 +81,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activerecord-import'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
-#gem 'bootstrap-sass', '3.4.1'
+gem 'bootstrap-sass', '3.4.1'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'mechanize'
 gem 'rails-i18n'
-#gem 'jquery-rails', '4.3.1'
+gem 'jquery-rails', '4.3.1'
 gem 'carrierwave'
 gem 'fog-aws'
-gem 'webpacker'
+# ESlintの導入をするために追加
+gem 'webpacker', '~> 2.0'
+gem 'foreman'
 
 # Slack APIを使用するために追加
 gem 'slack-api'
