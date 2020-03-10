@@ -17,6 +17,7 @@ Gemをインストールする時は、当チームはビルドする必要は�
 $ docker-compose build
 
 それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
+コンテナから抜ける時はCommand+P,Q
 $ docker exec -it ●●● /bin/bash
 
 DB関連 コンテナに直接アクセスして以下のコマンドをやればOK
@@ -35,7 +36,7 @@ $ docker-compose logs -f
 
 railsコマンドを使用するときはvendor/bundle配下のrailsを使うようにします。
 （まずはコンテナにアクセス、そして以下コマンド）
-$ bundle exec rails ●●●●●●●●● ~
+$ bundle exec rails ●●● ~
 
 モデルでのテストコードを作っていく場合は下記のようにして
 （まずはコンテナにアクセス、そして以下コマンド）
