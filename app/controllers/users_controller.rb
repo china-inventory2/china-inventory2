@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update,:show]
-  before_action :admin_user,　only: [:index, :destroy]
-  skip_before_action  :admin_user,　only: :edit
+  before_action :correct_user, only: [:edit, :update, :show]
+  before_action :admin_user, only: [:index, :destroy]
+  skip_before_action :admin_user, only: :edit
 
   def index
 <<<<<<< HEAD
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "アカウントを作成しました。"
       if @user.reserch_user_flg?
-        redirect_to  root_url
+        redirect_to root_url
       elsif @user.inventory_manager_flg?
         redirect_to root_url
       end
@@ -80,14 +80,8 @@ end
     def admin_user
       if logged_in?
         unless current_user.admin?
-          flash[:danger] =  "権限がありません。"
-          if current_user.inventory_manager_flg?
-            redirect_to inventory_control_path(current_user)
-          elsif current_user.reserch_user_flg
-            redirect_to item_research_path(current_user)
-          else
+            flash[:success] = "権限がありません。"
             redirect_to root_url
-          end
         end
       end
     end

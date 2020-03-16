@@ -6,7 +6,7 @@ RSpec.describe "Users", type: :request do
       FactoryBot.create(:user)
       FactoryBot.create(:second_user)
     end
-    #indexリクエストが成功すること
+    # indexリクエストが成功すること
     it 'returns status code 200' do
       get users_path
       expect(response).to have_http_status(200)
@@ -16,7 +16,7 @@ RSpec.describe "Users", type: :request do
     before do
       @user = FactoryBot.create(:user)
     end
-    #ログインしていないのでリダイレクトされること
+    # ログインしていないのでリダイレクトされること
     it "returns status code 302" do
       get user_path(@user.id)
       expect(response).to have_http_status(302)
@@ -26,13 +26,13 @@ RSpec.describe "Users", type: :request do
     before do
       @user = FactoryBot.create(:user)
     end
-    #ログインしていないのでリダイレクトされること
+    # ログインしていないのでリダイレクトされること
     it "returns status code 302" do
       get edit_user_path(@user)
       expect(response).to have_http_status(302)
     end
   end
-  #newアクションのリクエストが成功すること
+  # newアクションのリクエストが成功すること
   describe "GET /usrs/new" do
     before do
       @user = FactoryBot.create(:user)
@@ -42,24 +42,24 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(200)
     end
   end
-  #newアクションのリクエストが成功すること
+  # newアクションのリクエストが成功すること
   describe 'POST #create' do
-  #パラメータが妥当な場合
+    # パラメータが妥当な場合
     context 'If the parameters are valid' do
-      #リクエストが成功すること
+      # リクエストが成功すること
       it 'Request succeeds' do
         post users_path, params: { user: FactoryBot.attributes_for(:user) }
         expect(response.status).to eq 302
       end
-      #ユーザーが登録されること
+      # ユーザーが登録されること
       it "create user" do
         expect do
-          post users_path, params: { user: FactoryBot.attributes_for(:user)}
+          post users_path, params: { user: FactoryBot.attributes_for(:user) }
         end.to change(User, :count).by(1)
       end
-      #パラメータが不正な場合
+      # パラメータが不正な場合
       context 'If the parameter is incorrect' do
-        #リクエストが成功すること
+        # リクエストが成功すること
         it 'Request succeeds' do
           post users_path, params: { user: FactoryBot.attributes_for(:user, :invalid) }
           expect(response.status).to eq 200
@@ -77,7 +77,7 @@ RSpec.describe "Users", type: :request do
     end
   end
   describe 'put #update' do
-  let(:takashi) { FactoryBot.create :takashi }
+    let(:takashi) { FactoryBot.create :takashi }
     context 'パラメータが妥当な場合' do
       it 'リクエストが成功すること' do
         put user_url takashi, params: { user: FactoryBot.attributes_for(:satoshi) }

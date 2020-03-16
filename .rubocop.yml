@@ -23,7 +23,9 @@ Metrics/BlockLength:
 
 Rails:
   Enabled: true
-
+# update_attributeを許可するため
+# Rails/SkipsModelValidations:
+#  Enabled: false
 ##################### Style ##################################
 
 # redirect_to xxx and return のイディオムを維持したい
@@ -220,4 +222,4 @@ Metrics/MethodLength:
 
 # 分岐の数。ガード句を多用しているとデフォルト 7 だと厳しい
 Metrics/PerceivedComplexity:
-  Max: 8
+  Max: 10

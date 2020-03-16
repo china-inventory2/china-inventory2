@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'top#index'
-  post '/', to:'sessions#create'
-  delete 'logout', to:"sessions#destroy"
+  post '/', to: 'sessions#create'
+  delete 'logout', to: "sessions#destroy"
   resources :teams do
     resources :buy_items, only: :index
     resources :researches, only: :index

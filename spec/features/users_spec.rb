@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
-  #アカウント作成関連
+  # アカウント作成関連
   scenario "アカウント作成に成功する" do
     visit new_user_path
     fill_in "Name", with: "tester"
