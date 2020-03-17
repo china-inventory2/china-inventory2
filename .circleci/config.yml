@@ -17,7 +17,7 @@ orbs:
   ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
 
 jobs:
-  rubocop:
+  ruby_lint:
     <<: *defaults
     steps:
       - checkout
@@ -33,7 +33,7 @@ jobs:
           command: |
             bundle exec rails db:setup
 
-  rspec:
+  test:
     <<: *defaults
     steps:
       - checkout
