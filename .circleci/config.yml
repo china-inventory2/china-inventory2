@@ -32,7 +32,7 @@ jobs:
           name: Setup database
           command: |
             bundle exec rails db:setup
-​
+
   test:
     <<: *defaults
     steps:
