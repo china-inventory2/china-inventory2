@@ -10,12 +10,12 @@ defaults: &defaults
       environment:
         TZ: Asia/Tokyo
         POSTGRES_PASSWORD: password
-
+​
 version: 2.1
-
+​
 orbs:
   ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
-
+​
 jobs:
   ruby_lint:
     <<: *defaults
@@ -32,7 +32,7 @@ jobs:
           name: Setup database
           command: |
             bundle exec rails db:setup
-
+​
   test:
     <<: *defaults
     steps:
@@ -58,7 +58,7 @@ workflows:
   version: 2
   rubocop_rspec:
     jobs:
-      - rubocop
-      - rspec:
+      - ruby_lint
+      - test:
           requires:
-            - rubocop
+            - ruby_lint
