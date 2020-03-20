@@ -23,9 +23,7 @@ Metrics/BlockLength:
 
 Rails:
   Enabled: true
-# update_attributeを許可するため
-# Rails/SkipsModelValidations:
-#  Enabled: false
+
 ##################### Style ##################################
 
 # redirect_to xxx and return のイディオムを維持したい
