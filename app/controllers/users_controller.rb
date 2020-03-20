@@ -6,12 +6,7 @@ class UsersController < ApplicationController
   skip_before_action :admin_user, only: :edit
 
   def index
-<<<<<<< HEAD
-    @users = User.all
-    @image = Image.new
-=======
     @users = User.paginate(page: params[:page], per_page: 50)
->>>>>>> 4edca3a... one_view_model_request_spec
   end
 
   def show
