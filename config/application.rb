@@ -22,6 +22,11 @@ module Myapp
       g.controller_specs = true
       g.helper_specs = false
       g.view_specs = false
+
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+      g.channel         assets: false
     end
   end
 end
