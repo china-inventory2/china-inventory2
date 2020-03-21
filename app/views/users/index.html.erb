@@ -55,3 +55,9 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+<%= form_with(model: @image, local: true) do |f| %>
+  <%= f.label "画像", class: "label-image" %>
+  <%= f.file_field :name, class: "form-control-file" %>
+  <%= f.submit "投稿", class: "btn" %>
+<% end %>
