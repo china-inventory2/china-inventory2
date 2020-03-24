@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '= 5.2.4.1'
+gem 'rails', '~> 6.0'
 
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -54,7 +54,8 @@ group :development do
   # 新規追加
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rspec-rails'
+  # rails6移行にあたり4.0以上が必要なため、beta版で対応
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
