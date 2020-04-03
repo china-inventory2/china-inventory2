@@ -1,7 +1,7 @@
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "個の入力不足があります。") %></h2>
 
       <ul>
       <% user.errors.full_messages.each do |message| %>
@@ -10,88 +10,56 @@
       </ul>
     </div>
   <% end %>
-
+<div class="col-md-6 col-md-offset-3">
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
+    <%= form.text_field :name, class:"form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :employee_number %>
-    <%= form.text_field :employee_number %>
+    <%= form.text_field :employee_number, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :line_id %>
-    <%= form.text_field :line_id %>
+    <%= form.text_field :line_id, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label :email, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
+    <%= form.text_field :email, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.label :address, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
+    <%= form.text_field :address, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
+    <%= form.label :phone_number, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
+    <%= form.telephone_field :phone_number, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :account_bank_name %>
-    <%= form.text_field :account_bank_name %>
+    <%= form.label :password, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
+    <%= form.password_field :password, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :account_number %>
-    <%= form.number_field :account_number %>
+  <%= form.label :password_confirmation, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
+    <%= form.password_field :password_confirmation, class:"form-control" %>
   </div>
+  <p class="inline_form">あなたの雇用形態を選択してください(複数選択可)</p><p class="smoll_required inline_form">*必須</p>
+  <div class="field　form-inline" >
+  <label class="checkbox-inline"><%= form.check_box :inventory_manager_flg %>在庫管理</label>
 
-  <div class="field">
-    <%= form.label :business_expenses %>
-    <%= form.number_field :business_expenses %>
+  <label class="checkbox-inline"><%= form.check_box :reserch_user_flg %>リサーチ</label>
   </div>
+  <div class="actions" id="action">
+    <%= form.submit yield(:button_text), class:"btn btn-primary btn-block btn-#{yield(:class_text)}"%>
+  </div>
+  <p>✳︎アカウント作成後は、プロフィール編集でプロフィール画像を設定してください</p>
+</div>
 
-  <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
-  </div>
-
-  <div class="field">
-    <%= form.label :inventory_manager_flg %>
-    <%= form.check_box :inventory_manager_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reserch_user_flg %>
-    <%= form.check_box :reserch_user_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner_flg %>
-    <%= form.check_box :owner_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fired_flg %>
-    <%= form.check_box :fired_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remember_digest %>
-    <%= form.text_field :remember_digest %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
