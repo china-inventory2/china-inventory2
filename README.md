@@ -12,15 +12,15 @@ $ cd china-inventory2
 初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う。
 $ docker-compose up
 
-Dockerfileに変更を加えた場合はこれです。
-Gemをインストールする時は、当チームはビルドする必要はありません。
+Dockerfileに変更を加えた場合はこれですが、
+Gemをインストールする時でも、当チームはビルドする必要はありません。
 $ docker-compose build
 
 それぞれのコンテナのターミナルに直接アクセス  ●●●はコンテナID
 コンテナから抜ける時はCommand+P,Q
 $ docker exec -it ●●● /bin/bash
 
-DB関連 コンテナに直接アクセスして以下のコマンドをやればOK
+DB関連 コンテナに直接アクセスして以下のコマンドをやればOK(bundle execつけなくてもいい)
 $ bundle exec rails db:reset
 $ bundle exec rails db:create
 $ bundle exec rails db:migrate
