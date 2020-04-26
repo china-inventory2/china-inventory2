@@ -1,94 +1,94 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
-  # Code is not reloaded between requests.
+  # ここで指定した設定は、config / application.rbの設定よりも優先されます。
+​
+  # コードはリクエスト間でリロードされない。
   config.cache_classes = true
-
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both threaded web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
+​
+  # 起動時にeager_loadをロードしない
+  # これにより、ほとんどのRailsとアプリケーションがメモリに読み込まれ、
+  # スレッド化されたWebサーバーとコピーオンライトに依存するWebサーバーの両方のパフォーマンスが向上します。
+  # Rakeタスクはパフォーマンスのためにこのオプションを自動的に無視します。
   config.eager_load = true
-
-  # Full error reports are disabled and caching is turned on.
+​
+  # 完全なエラーレポートが無効になり、キャッシュがオンになります。
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-
-  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
-  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
+​
+  # ENV ["RAILS_MASTER_KEY"]またはconfig / master.keyのいずれかで
+  # マスターキーが使用可能になっていることを確認します。
+  # このキーは、資格情報（およびその他の暗号化されたファイル）を復号化するために使用されます。
   # config.require_master_key = true
-
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
+​
+  # 以降、デフォルトで /public フォルダからの静的ファイルの提供を無効にします
+  # ApacheまたはNGINXはこれをすでに処理しています。
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
-
-  # Compress JavaScripts and CSS.
+​
+  # JavaScriptとCSSを圧縮します。
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
+​
+  # プリコンパイルされたアセットがない場合は、アセットパイプラインにフォールバックしないでください。
   config.assets.compile = false
-
+​
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
-
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+​
+  # アセットサーバーからの画像、スタイルシート、JavaScriptの提供を有効にします。
   # config.action_controller.asset_host = 'http://assets.example.com'
-
-  # Specifies the header that your server uses for sending files.
+​
+  # サーバーがファイルの送信に使用するヘッダーを指定します。
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
-
-  # Store uploaded files on the local file system (see config/storage.yml for options)
+​
+  # アップロードしたファイルをローカルファイルシステムに保存します（オプションについてはconfig / storage.ymlを参照してください）
   config.active_storage.service = :local
-
-  # Mount Action Cable outside main process or domain
+​
+  # Action_cableをメインプロセスまたはドメイン外にマウントします
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+​
+  # SSL経由でアプリへのすべてのアクセスを強制し、Strict-Transport-Securityを使用し、安全なCookieを使用します。
   # config.force_ssl = true
-
-  # Use the lowest log level to ensure availability of diagnostic information
-  # when problems arise.
-  config.log_level = :debug
-
-  # Prepend all log lines with the following tags.
+​
+  # 最も低いログレベルを使用して、問題が発生したときに診断情報を利用できるようにする
+  config.log_level = :error
+​
+  # すべてのログ行の前に次のタグを付ける
   config.log_tags = [ :request_id ]
-
-  # Use a different cache store in production.
+​
+  # 本番環境では別のキャッシュストアを使用させるかどうか
   # config.cache_store = :mem_cache_store
-
-  # Use a real queuing backend for Active Job (and separate queues per environment)
+​
+  # Active_Job（および環境ごとに個別のキュー）に実際のキューバックエンドを使用するかどうか
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "myapp_#{Rails.env}"
-
+​
   config.action_mailer.perform_caching = false
-
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+​
+  # 不正なメールアドレスを無視し、メール配信エラーを発生させないかどうか
+  # これをtrueに設定し、電子メールサーバーを即時配信用に構成して、配信エラーを発生させます。
   # config.action_mailer.raise_delivery_errors = false
-
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
+​
+  # I18nのロケールフォールバックを有効にするかどうか
+  #（翻訳が見つからない場合、すべてのロケールのルックアップをI18n.default_localeにフォールバックします）
   config.i18n.fallbacks = true
-
-  # Send deprecation notices to registered listeners.
+​
+  # 登録済みのリスナーに廃止通知を送信します。
   config.active_support.deprecation = :notify
-
-  # Use default logging formatter so that PID and timestamp are not suppressed.
+​
+  # PIDとタイムスタンプが抑制されないように、デフォルトのロギングフォーマッタを使用します。
   config.log_formatter = ::Logger::Formatter.new
-
-  # Use a different logger for distributed setups.
+​
+  # distributd setups には別のロガーを使用するようにする。
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
+​
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-
-  # Do not dump schema after migrations.
+​
+  # マイグレーション後にスキーマをダンプしないようにする。
   config.active_record.dump_schema_after_migration = false
 end
