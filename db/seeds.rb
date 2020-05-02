@@ -1,3 +1,6 @@
+
+Team.create!(name: "one")
+
 User.create!(name: "Sample User",
              line_id: "12341234",
              email: "test@email.com",
@@ -7,4 +10,5 @@ User.create!(name: "Sample User",
              phone_number: "080-1234-1234",
              inventory_manager_flg: true,
              reserch_user_flg: true,
-             admin: 1)
+             team_id: 1,
+             admin: true)
