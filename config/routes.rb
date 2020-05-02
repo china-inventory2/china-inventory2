@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :teams do
     resources :buy_items, only: :index
     resources :researches, only: :index
-    resources :items, only: :index
+    resources :items, only: :index do
+      collection { post :import, :csv_scarceexport }
+    end
   end
   resources :users do
     resources :take_inventories

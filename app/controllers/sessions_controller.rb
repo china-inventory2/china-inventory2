@@ -3,17 +3,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user &.authenticate(params[:session][:password])
       log_in user
-      remember user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      remember(user) if params[:session][:remember_me] == '1'
       flash[:success] = 'ログインしました。'
-      if user.inventory_manager_flg == true || user.admin == true
-        redirect_to root_url
-      elsif user.reserch_user_flg == true
-        redirect_to root_url
-      end
+      redirect_to team_items_url(team_id: user.team_id)
     else
       flash.now[:danger] = 'メールアドレスまたはパスワードが間違っています。'
-      render 'static_pages/top'
+      render 'top/index'
     end
   end
 
