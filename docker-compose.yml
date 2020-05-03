@@ -9,7 +9,7 @@ services:
       - public_volume:/myapp/public
       - tmp_volume:/myapp/tmp
       - log_volume:/myapp/log
-      - ./vendor/bundle:/usr/local/bundle
+      - vendor_bundle:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
@@ -45,6 +45,7 @@ services:
       MINIO_ACCESS_KEY: minio_access_key
       MINIO_SECRET_KEY: minio_secret_key
 volumes:
+  vendor_bundle:
   public_volume:
   tmp_volume:
   log_volume:
