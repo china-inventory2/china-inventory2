@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @members = User.where(team_id: current_user.team_id)
   end
 
   # GET /teams/new

@@ -11,4 +11,5 @@ User.create!(name: "Sample User",
              inventory_manager_flg: true,
              reserch_user_flg: true,
              team_id: 1,
+             owner_flg: true,
              admin: true)

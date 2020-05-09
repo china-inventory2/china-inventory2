@@ -4,6 +4,26 @@
   <strong>Name:</strong>
   <%= @team.name %>
 </p>
+<%= link_to "メンバー追加", new_user_path %>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td>
+          <%= link_to 'edit', edit_user_path(member) %>
+          <%= link_to 'delete', user_path(member), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
