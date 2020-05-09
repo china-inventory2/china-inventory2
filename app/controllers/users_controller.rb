@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update, :show]
   before_action :admin_user, only: [:index, :destroy]
-  skip_before_action :admin_user, only: [:edit]
+  skip_before_action :admin_user, only: :edit
 
   def index
     @users = User.paginate(page: params[:page], per_page: 50)
@@ -22,14 +22,16 @@ class UsersController < ApplicationController
 
   def create
     account = AccountCreator.new(user_params, team_params)
-    if !logged_in?      #新規オーナーアカウント作成
+    # 新規オーナーアカウント作成
+    if !logged_in?
       account.team_build
       user = account.user_build
       log_in user
       flash[:success] = "アカウントを作成しました。"
       redirect_to team_items_url(team_id: user.team_id)
-    else                  
-      #メンバーアカウント作成
+    else
+      # メンバーアカウント作成
+      redirect_to team_items_url(team_id: current_user.team_id)
     end
   end
 
@@ -49,6 +51,7 @@ class UsersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -73,7 +76,7 @@ class UsersController < ApplicationController
 
     def correct_user
       if !current_user?(@user) || !current_user.admin?
-        redirect_to(root_url) 
+        redirect_to(root_url)
       end
     end
 
@@ -85,4 +88,4 @@ class UsersController < ApplicationController
         end
       end
     end
-  end
+end
