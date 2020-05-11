@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  belongs_to :team
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
@@ -11,8 +12,8 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, length: { maximum: 255 }
   validates :employee_number, length: { maximum: 255 }
   validates :fired_flg, length: { maximum: 50 }
-  validates :inventory_manager_flg, acceptance: true, if: :reserch_user_flg_validation?
-  validates :reserch_user_flg, acceptance: true, if: :inventory_manager_flg_validation?
+  # validates :inventory_manager_flg, acceptance: true, if: :reserch_user_flg_validation?
+  # validates :reserch_user_flg, acceptance: true, if: :inventory_manager_flg_validation?
   def reserch_user_flg_validation?
     reserch_user_flg == false
   end
@@ -37,7 +38,7 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update!(:remember_digest, User.digest(remember_token))
   end
 
   def authenticated?(remember_token)
@@ -47,6 +48,6 @@ class User < ApplicationRecord
   end
 
   def forget
-    update(:remember_digest, :nil)
+    update!(:remember_digest, nil)
   end
 end

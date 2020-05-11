@@ -14,23 +14,24 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @team = Team.new
   end
 
   def edit
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      log_in @user
+    account = AccountCreator.new(user_params, team_params)
+    # 新規オーナーアカウント作成
+    if !logged_in?
+      account.team_build
+      user = account.user_build
+      log_in user
       flash[:success] = "アカウントを作成しました。"
-      if @user.reserch_user_flg?
-        redirect_to root_url
-      elsif @user.inventory_manager_flg?
-        redirect_to root_url
-      end
+      redirect_to team_items_url(team_id: user.team_id)
     else
-      render :new
+      # メンバーアカウント作成
+      redirect_to team_items_url(team_id: current_user.team_id)
     end
   end
 
@@ -48,8 +49,9 @@ class UsersController < ApplicationController
     flash[:danger] = "ユーザーを削除しました。"
     redirect_to users_path
   end
-end
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -57,7 +59,11 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :employee_number, :line_id, :email, :address, :phone_number, :password, :password_confirmation, :inventory_manager_flg, :reserch_user_flg, :account_bank_name, :account_number, :business_consignment_expenses)
+      params.require(:user).permit(:team_id, :name, :employee_number, :line_id, :email, :address, :phone_number, :password, :password_confirmation, :inventory_manager_flg, :reserch_user_flg, :account_bank_name, :account_number, :business_consignment_expenses)
+    end
+
+    def team_params
+      params.require(:team).permit(:name)
     end
 
     def logged_in_user
@@ -69,14 +75,17 @@ end
     end
 
     def correct_user
-      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
+      if !current_user?(@user) || !current_user.admin?
+        redirect_to(root_url)
+      end
     end
 
     def admin_user
       if logged_in?
         unless current_user.admin?
-            flash[:success] = "権限がありません。"
-            redirect_to root_url
+          flash[:success] = "権限がありません。"
+          redirect_to root_url
         end
       end
     end
+end

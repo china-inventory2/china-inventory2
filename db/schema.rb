@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2020_03_08_071156) do
     t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "team_id"
+    # t.bigint "team_id"
     t.string "avatar"
     t.index ["team_id"], name: "index_users_on_team_id"
   end

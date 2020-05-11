@@ -89,12 +89,12 @@ class ItemsController < ApplicationController
   def import
     begin
       Item.import(params[:file])
-      if Item.get_processing==1
+      if Item.get_processing == 1
         flash[:success] = "インポートに成功しました"
       else
         flash[:danger] = "インポートに失敗しました"
       end
-    rescue => e
+    rescue StandardError => e
       logger.error e
       flash[:danger] = "ＣＳＶファイルを選択して下さい"
     end
@@ -102,29 +102,29 @@ class ItemsController < ApplicationController
   end
 
   def product_scarce
-    @items=Item.includes(:stocks)
+    @items = Item.includes(:stocks)
   end
 
   def product_item_number
-    item=Item.find(params[:id])
-    item.part_number=params[:part_number]
+    item = Item.find(params[:id])
+    item.part_number = params[:part_number]
     item.save
     flash[:success] = "製品番号を変更しました"
     redirect_to "/users/#{current_user.id}/product_scarce"
   end
 
-  #僅少商品のみ
+  # 僅少商品のみ
   def csv_scarceexport
-    @items=Item.all
+    @items = Item.all
   end
 
-  #売切れ商品一覧
+  # 売切れ商品一覧
   def csv_soldoutexport
-    @items=Item.all
+    @items = Item.all
   end
 
   def sold_out
-    @items=Item.includes(:stocks)
+    @items = Item.includes(:stocks)
   end
 
   def product_registration
@@ -137,7 +137,7 @@ class ItemsController < ApplicationController
       delete_list = params[:deletes].keys
       ActiveRecord::Base.transaction do
         if Item.destroy(delete_list)
-          flash[:success] ="削除に成功しました"
+          flash[:success] = "削除に成功しました"
         end
       end
     else
@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
 
   def price_update
     if @item.update(item_price_update_params)
-        flash[:success] = "想定販売額の初期設定をしました。"
+      flash[:success] = "想定販売額の初期設定をしました。"
     else
       flash[:danger] =  "想定販売額の初期設定に失敗しました。再度やり直してください。"
     end
@@ -158,7 +158,7 @@ class ItemsController < ApplicationController
   def buyitems_price_update
     buyitem = Buyitem.find(params[:id])
     if buyitem.update(buyitem_price_update_params)
-        flash[:success] = "仕入額額の設定をしました。"
+      flash[:success] = "仕入額額の設定をしました。"
     else
       flash[:danger] =  "仕入額の設定に失敗しました。再度やり直してください。"
     end
